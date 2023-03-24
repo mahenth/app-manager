@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+      body {
+  font: 1em/1.618 Inter, sans-serif;
+  color: #224;
+  background:
+    url(https://source.unsplash.com/E8Ufcyxz514/2400x1823)
+    center / cover no-repeat fixed;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.45);
+  overflow-x: hidden;
+  padding-top: 20px;
+  margin-left: 10px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #272727;
+}
+
+.product-card {
+  color: rgb(51, 51, 51);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width:800px;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
+}
+
+
+.product-card img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-card h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.points-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #2c2c2c;
+  background-color: #0080ff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#profile{
+  margin-left: 180px;
+}
+
+a{
+  color:#f1f1f1
+}
+
+
+    </style>
+</head>
+<body>
+  <div class="sidenav">
+    <a class="fas fa-home" href="{% url 'index' %}">Home</a><hr>
+    <a href="{% url 'profile' %}">Profile</a><hr>
+    <a href="{% url 'points' %}">Points</a><hr>
+    <a href="#contact">Task</a><hr>
+    <a href="{% url 'logout' %}">Logout</a><hr>
+
+  </div>
+  <div id="profile">
+    <h1>Welcome, {{ user.username }}!</h1>
+    <p>Email: {{ user.email }}</p>
+  </div>
+</body>
+</html>
+

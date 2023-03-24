@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin home</title>
+    <style>
+        body {
+  font: 1em/1.618 Inter, sans-serif;
+  color: #224;
+  background:
+    url(https://source.unsplash.com/E8Ufcyxz514/2400x1823)
+    center / cover no-repeat fixed;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.45);
+  overflow-x: hidden;
+  padding-top: 20px;
+  margin-left: 10px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #202020;
+}
+
+#main{
+  margin-left: 160px;
+}
+
+#name{
+  margin-left: 10px;
+}
+.product-card {
+  color: rgb(51, 51, 51);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 200px;
+  max-width:800px;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(15px);
+
+}
+
+
+.product-card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-card h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.points-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: #202020;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+}
+    </style>
+</head>
+<body>
+  <section>
+    <div id="main">
+      <h1 id="name">Admin</h1>
+    </div>  
+  </section>
+    <div class="sidenav">
+        <a href="">Home</a><hr>
+        <a href="{% url 'add_product' %}">Add App</a><hr>
+        <a href="{% url 'logout' %}">Logout</a><hr>
+      </div>
+      {% for product in products %}
+      <div class="product-card">
+        <img src="{{ MEDIA_URL }}{{ product.image.url }}" alt="{{ product.title }}" width="200" height="200">
+        <h1>{{ product.title }}</h1><br>
+        <p><a href="{{ product.link }}">{{product.link}}</a></p><br>
+        <p class="points-button">{{ product.points }} points</p>
+      </div>
+      {% endfor %}
+</body>
+</html>
