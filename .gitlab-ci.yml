@@ -19,9 +19,13 @@
 image: python:3.9
 
 stages:
+  - build
   - test
   - deploy
-
+build:
+  stage: build
+  script:
+    - python manage.py runserver
 test:
   stage: test
   script:
